@@ -1,0 +1,260 @@
+service: event-source-mapping1
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: python3.6
+  variableSyntax: "\\${{([\\s\\S]+?)}}" 
+  environment:
+    EVENT_STREAM: ${{self:service}}-${{self:provider.stage}}-event-stream
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:*
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - kinesis:*
+      Resource: "*"
+    
+functions:
+  mapper:
+    handler: mapper.lambda_handler
+    timeout: 300
+  sink00:
+    handler: sink.lambda_handler
+  sink01:
+    handler: sink.lambda_handler
+  sink02:
+    handler: sink.lambda_handler
+  sink03:
+    handler: sink.lambda_handler
+  sink04:
+    handler: sink.lambda_handler
+  sink05:
+    handler: sink.lambda_handler
+  sink06:
+    handler: sink.lambda_handler
+  sink07:
+    handler: sink.lambda_handler
+  sink08:
+    handler: sink.lambda_handler
+  sink09:
+    handler: sink.lambda_handler
+  sink10:
+    handler: sink.lambda_handler
+  sink11:
+    handler: sink.lambda_handler
+  sink12:
+    handler: sink.lambda_handler
+  sink13:
+    handler: sink.lambda_handler
+  sink14:
+    handler: sink.lambda_handler
+  sink15:
+    handler: sink.lambda_handler
+  loader:
+    handler: loader.lambda_handler
+
+resources:
+  Description: Custom Resource
+  Resources:
+    EventStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        Name: ${{self:provider.environment.EVENT_STREAM}}
+        ShardCount: 1
+    EventSourceMapping00:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink00LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping01:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink01LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping02:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink02LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping03:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink03LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping04:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink04LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping05:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink05LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping06:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink06LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping07:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink07LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping08:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink08LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping09:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink09LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping10:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink10LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping11:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink11LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping12:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink12LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping13:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink13LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping14:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink14LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
+    EventSourceMapping15:
+      Type: Custom::EventSourceMapping
+      Properties:
+        ServiceToken: 
+          Fn::GetAtt: [MapperLambdaFunction, Arn]
+        EventSourceArn:
+          Fn::GetAtt: [EventStream,Arn]
+        FunctionName: 
+          Fn::GetAtt: [Sink15LambdaFunction,Arn]
+        StartingPosition: LATEST
+        BatchSize: 5
+        Enabled: True
