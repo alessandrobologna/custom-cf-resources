@@ -21,4 +21,9 @@ Just deploy this stack with `sls deploy`, then run `sls invoke local -f loader` 
         Enabled: True
 ```
 The Custom resource will retry registering any time it gets a `ProvisionedThroughputExceededException` or a `LimitExceededException`, without bailing out.
+The `serverless.yaml` file also sets a `PAUSE` environment variable, to use the _sleeping pattern_ in the sink function.
+By requiring the sink function to sleep for the specified time, we can effectively control the rate of invocation for our subscriptions and effectively be able to bypass the 5 read/second maximum rate limits.
+![dashboard](art/dashboard.png)
+Above is an example of the runtime behavior for this pattern, where each group of 4 functions is given a different sleep time. 
+
 

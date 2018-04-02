@@ -1,0 +1,84 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 12,
+            "properties": {
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/Lambda", "IteratorAge", "FunctionName", "event-source-mapping-dev-sink00", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink01", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink02", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink03", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink04", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink05", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink06", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink07", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink08", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink09", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink10", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink11", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink12", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink13", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink14", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink15", { "period": 60 } ]
+                ],
+                "region": "us-east-1",
+                "start": "-PT5M",
+                "end": "P0D"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 0,
+            "width": 12,
+            "height": 12,
+            "properties": {
+                "view": "singleValue",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/Lambda", "IteratorAge", "FunctionName", "event-source-mapping-dev-sink00", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink01", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink02", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink03", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink04", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink05", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink06", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink07", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink08", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink09", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink10", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink11", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink12", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink13", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink14", { "period": 60 } ],
+                    [ "...", "event-source-mapping-dev-sink15", { "period": 60 } ]
+                ],
+                "region": "us-east-1",
+                "start": "-PT5M",
+                "end": "P0D"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 12,
+            "width": 24,
+            "height": 6,
+            "styles": "undefined",
+            "properties": {
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [ "AWS/Kinesis", "PutRecord.Success", "StreamName", "event-source-mapping-dev-event-stream", { "stat": "Sum", "period": 60 } ]
+                ],
+                "region": "us-east-1"
+            }
+        }
+    ]
+}

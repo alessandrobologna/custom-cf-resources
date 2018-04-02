@@ -1,4 +1,4 @@
-service: event-source-mapping1
+service: event-source-mapping
 
 frameworkVersion: ">=1.2.0 <2.0.0"
 
@@ -25,38 +25,87 @@ functions:
     timeout: 300
   sink00:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 1
   sink01:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 1
   sink02:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 1
   sink03:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 1
   sink04:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 5
   sink05:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 5
   sink06:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 5
   sink07:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 5
   sink08:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 10
   sink09:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 10
   sink10:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 10
   sink11:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 10
   sink12:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 30
   sink13:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 30
   sink14:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 30
   sink15:
     handler: sink.lambda_handler
+    timeout: 300
+    environment:
+      PAUSE: 30
   loader:
     handler: loader.lambda_handler
+    timeout: 300
 
 resources:
   Description: Custom Resource
@@ -76,7 +125,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink00LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 200
         Enabled: True
     EventSourceMapping01:
       Type: Custom::EventSourceMapping
@@ -88,7 +137,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink01LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 200
         Enabled: True
     EventSourceMapping02:
       Type: Custom::EventSourceMapping
@@ -100,7 +149,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink02LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 200
         Enabled: True
     EventSourceMapping03:
       Type: Custom::EventSourceMapping
@@ -112,7 +161,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink03LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 200
         Enabled: True
     EventSourceMapping04:
       Type: Custom::EventSourceMapping
@@ -124,7 +173,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink04LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 1000
         Enabled: True
     EventSourceMapping05:
       Type: Custom::EventSourceMapping
@@ -136,7 +185,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink05LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 1000
         Enabled: True
     EventSourceMapping06:
       Type: Custom::EventSourceMapping
@@ -148,7 +197,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink06LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 1000
         Enabled: True
     EventSourceMapping07:
       Type: Custom::EventSourceMapping
@@ -160,7 +209,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink07LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 1000
         Enabled: True
     EventSourceMapping08:
       Type: Custom::EventSourceMapping
@@ -172,7 +221,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink08LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 2000
         Enabled: True
     EventSourceMapping09:
       Type: Custom::EventSourceMapping
@@ -184,7 +233,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink09LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 2000
         Enabled: True
     EventSourceMapping10:
       Type: Custom::EventSourceMapping
@@ -196,7 +245,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink10LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 2000
         Enabled: True
     EventSourceMapping11:
       Type: Custom::EventSourceMapping
@@ -208,7 +257,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink11LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 2000
         Enabled: True
     EventSourceMapping12:
       Type: Custom::EventSourceMapping
@@ -220,7 +269,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink12LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 6000
         Enabled: True
     EventSourceMapping13:
       Type: Custom::EventSourceMapping
@@ -232,7 +281,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink13LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 3000
         Enabled: True
     EventSourceMapping14:
       Type: Custom::EventSourceMapping
@@ -244,7 +293,7 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink14LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 3000
         Enabled: True
     EventSourceMapping15:
       Type: Custom::EventSourceMapping
@@ -256,5 +305,5 @@ resources:
         FunctionName: 
           Fn::GetAtt: [Sink15LambdaFunction,Arn]
         StartingPosition: LATEST
-        BatchSize: 5
+        BatchSize: 3000
         Enabled: True
